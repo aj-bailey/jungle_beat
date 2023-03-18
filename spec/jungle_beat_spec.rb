@@ -39,4 +39,25 @@ RSpec.describe JungleBeat do
       expect(fourth_node.next_node.next_node.data).to eq("shu")
     end
   end
+
+  describe '#count' do
+    it 'returns the number of nodes in linked list' do
+      @jb.append("deep doo ditt")
+
+      expect(@jb.count).to eq(3)
+
+      @jb.append("woo hoo shu nu")
+
+      expect(@jb.count).to eq(7)
+      # require 'pry'; binding.pry
+    end
+  end
+
+  describe '#play' do
+    it 'plays the jungle beats' do
+      @jb.append("deep doo ditt woo hoo shu")
+
+      expect(@jb.play).to eq(`say -r 500 -v Boing deep doo ditt woo hoo shu`)
+    end
+  end
 end
