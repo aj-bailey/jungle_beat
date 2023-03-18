@@ -49,7 +49,6 @@ RSpec.describe JungleBeat do
       @jb.append("woo hoo shu nu")
 
       expect(@jb.count).to eq(7)
-      # require 'pry'; binding.pry
     end
   end
 
