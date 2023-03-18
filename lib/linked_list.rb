@@ -43,4 +43,26 @@ class LinkedList
 
     string.join(" ")
   end
+
+  def prepend(beat)
+    new_head = Node.new(beat)
+    new_head.append_node(@head)
+    @head = new_head
+  end
+
+  def insert(index, beat)
+    if index == 0 
+      prepend(beat)
+      return
+    end
+
+    previous_node = @head
+
+    (index - 1).times { previous_node = previous_node.next_node } 
+    
+    inserted_node = Node.new(beat)
+    inserted_node.append_node(previous_node.next_node)
+
+    previous_node.append_node(inserted_node)
+  end
 end

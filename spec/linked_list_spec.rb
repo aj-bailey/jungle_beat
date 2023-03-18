@@ -2,11 +2,11 @@ require './lib/linked_list'
 require './lib/node'
 
 RSpec.describe LinkedList do
-  context 'Iteration 1' do
-    before(:each) do
-      @list = LinkedList.new
-    end
+  before(:each) do
+    @list = LinkedList.new
+  end
 
+  context 'Iteration 1' do
     describe '#initialize' do
       it 'exists' do
         expect(@list).to be_a(LinkedList)
@@ -65,6 +65,39 @@ RSpec.describe LinkedList do
           
           expect(@list.to_string).to eq("doop deep derp")
         end
+      end
+    end
+  end
+
+  context 'Iteration 2' do
+    before(:each) do
+        @list.append("plop")
+        @list.append("suu")
+    end
+
+    describe '#prepend' do
+      it 'adds new node to head' do
+        expect(@list.to_string).to eq("plop suu")
+
+        @list.prepend("dop")
+
+        expect(@list.to_string).to eq("dop plop suu")
+      end
+    end
+
+    describe '#insert' do
+      it 'inserts new beat into specified index of list' do
+        @list.prepend("dop")
+
+        expect(@list.to_string).to eq("dop plop suu")
+        
+        @list.insert(1, "woo")
+
+        expect(@list.to_string).to eq("dop woo plop suu")
+        
+        @list.insert(0, "yo")
+
+        expect(@list.to_string).to eq("yo dop woo plop suu")
       end
     end
   end
