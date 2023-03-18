@@ -100,8 +100,7 @@ RSpec.describe LinkedList do
         expect(@list.to_string).to eq("yo dop woo plop suu")
       end
     end
-
-    describe '#find' do
+    context "find and includes? methods" do
       before(:each) do
         @list = LinkedList.new
   
@@ -112,12 +111,24 @@ RSpec.describe LinkedList do
         @list.append("blop")
       end
 
-      it 'finds the beat at a specific index' do
-        expect(@list.find(2,1)).to eq("shi")
+      describe '#find' do
+        it 'finds the beat at a specific index' do
+          expect(@list.find(2,1)).to eq("shi")
+        end
+
+        it 'finds the beat at the specified index plus additional nodes' do
+          expect(@list.find(1,3)).to eq("woo shi shu")
+        end
       end
 
-      it 'finds the beat at the specified index plus additional nodes' do
-        expect(@list.find(1,3)).to eq("woo shi shu")
+      describe '#includes?' do
+        it 'returns true if linked list includes specific data' do
+          expect(@list.includes?("deep")).to eq(true)
+        end
+        
+        it 'returns false if linked list does not include specific data' do
+          expect(@list.includes?("dep")).to eq(false)
+        end
       end
     end
   end
