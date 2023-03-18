@@ -65,4 +65,18 @@ class LinkedList
 
     previous_node.append_node(inserted_node)
   end
+  
+  def find(index, num_beats)
+    index_node = @head
+    beats = []
+
+    index.times { index_node = index_node.next_node }
+
+    num_beats.times do 
+      beats << index_node.data
+      index_node = index_node.next_node
+    end
+
+    beats.join(" ")
+  end
 end

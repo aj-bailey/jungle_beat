@@ -100,5 +100,25 @@ RSpec.describe LinkedList do
         expect(@list.to_string).to eq("yo dop woo plop suu")
       end
     end
+
+    describe '#find' do
+      before(:each) do
+        @list = LinkedList.new
+  
+        @list.append("deep")
+        @list.append("woo")
+        @list.append("shi")
+        @list.append("shu")
+        @list.append("blop")
+      end
+
+      it 'finds the beat at a specific index' do
+        expect(@list.find(2,1)).to eq("shi")
+      end
+
+      it 'finds the beat at the specified index plus additional nodes' do
+        expect(@list.find(1,3)).to eq("woo shi shu")
+      end
+    end
   end
 end
