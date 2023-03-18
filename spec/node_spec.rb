@@ -16,5 +16,14 @@ RSpec.describe Node do
         expect(@node.next_node).to eq(nil)
       end
     end
+
+    describe '#append_node' do
+      it 'adds node to next node' do
+        @node.append_node(Node.new('deep'))
+
+        expect(@node.next_node).to be_a(Node)
+        expect(@node.next_node.data).to eq('deep')
+      end
+    end
   end
 end
